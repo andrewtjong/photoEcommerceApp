@@ -2,14 +2,18 @@ import React, {useState} from "react"
 
 function Image({className, img}) {
     const [hovered, setHovered] = useState(false)
-    console.log(hovered)
-
-    return(
-        <div
-        onMouseEnter={() => setHovered(true)}
-        oneMouseLeave={() =>setHovered(false)}
-        className={`${className} image-container`}>
+    const heartIcon = hovered && <i className="ri-heart-line favorite"></i>
+    const cartIcon = hovered && <i className="ri-add-circle-line cart"></i>
+   
+    return (
+        <div 
+            className={`${className} image-container`}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            >
             <img src={img.url} className="image-grid"/>
+            {heartIcon}
+            {cartIcon}
         </div>
     )
 }
